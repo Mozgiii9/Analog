@@ -40,7 +40,8 @@ check_logs() {
 
 # Функция для сохранения результата
 save_result() {
-  echo '{"id":1,"jsonrpc":"2.0","method":"author_rotateKeys","params":[]}' | websocat -n1 -B 99999999 ws://127.0.0.1:9944
+  result=$(echo '{"id":1,"jsonrpc":"2.0","method":"author_rotateKeys","params":[]}' | websocat -n1 -B 99999999 ws://127.0.0.1:9944)
+  echo "Результат: $result"
 }
 
 # Основное меню
@@ -50,7 +51,8 @@ main_menu() {
     echo "Меню:"
     echo "1. Установить ноду Analog"
     echo "2. Проверить логи ноды Analog"
-    echo "3. Выйти из скрипта"
+    echo "3. Узнать адрес ноды Analog"
+    echo "4. Выйти из скрипта"
     read -p "Выберите опцию: " option
 
     case $option in
@@ -62,6 +64,9 @@ main_menu() {
         check_logs
         ;;
       3)
+        save_result
+        ;;
+      4)
         echo "Выход из скрипта."
         exit 0
         ;;
