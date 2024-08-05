@@ -28,7 +28,7 @@ install_packages() {
 run_node() {
   read -p "Введите имя ноды: " NODE_NAME
   sudo docker pull analoglabs/timechain
-  sudo docker run -d -p 9944:9944 -p 30303:30303 --name analog_node analoglabs/timechain --base-path /data --unsafe-rpc-external --rpc-methods=Unsafe --name "$NODE_NAME" --telemetry-url='wss://telemetry.analog.one/submit 9'
+  sudo docker run -d -p 9944:9944 -p 30303:30303 analoglabs/timechain --base-path /data --unsafe-rpc-external --rpc-methods=Unsafe --name "$NODE_NAME" --telemetry-url='wss://telemetry.analog.one/submit 9'
 }
 
 # Функция для проверки логов ноды
